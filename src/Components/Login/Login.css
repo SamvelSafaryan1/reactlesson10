@@ -1,0 +1,27 @@
+.form{
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin: auto;
+    border: 2px solid black;
+    background-color: azure;
+}
+
+h2{
+    text-align: center;
+}
+
+.form input, button{
+    display: flex;
+    padding: 5px;
+    margin: auto;
+}
+
+button{
+    background-color: blue;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+
