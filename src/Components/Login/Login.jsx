@@ -4,6 +4,7 @@ import { Formik } from 'formik'
 import './Login.css'
 
 function Login(){
+    let regexp = '/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/'
     let validationSchema = YUP.object().shape({
         name: YUP.string().required('Write your name'),
         email: YUP.string().min(6).required('Write your email'),
@@ -26,12 +27,13 @@ function Login(){
             }}
         >
             {
-                ({values,errors,touched,handleChange,handleSubmit}) => (
+                ({values,errors,touched,handleChange,handleSubmit,handleBlur}) => (
                     <div className="form">
                         <h2>Login</h2>
                         <input value={values.name}
                                  type='text' 
-                                 onChange={handleChange} 
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
                                  placeholder='Name'
                                  name='name'
                                  className={
@@ -39,16 +41,18 @@ function Login(){
                                  } 
                         />
                         <input value={values.email}
-                                 onChange={handleChange} 
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
                                  type='email' 
                                  placeholder='Email' 
                                  name='email'
                                  className={
-                                    errors.email && touched.email ? 'error' : ''
+                                    errors.email && touched.email && regexp ? 'error' : ''
                                 } 
                         />
                         <input value={values.password}
-                                 onChange={handleChange} 
+                                 onChange={handleChange}
+                                 onBlur={handleBlur}
                                  type='password' 
                                  placeholder='Password' 
                                  name='password'
